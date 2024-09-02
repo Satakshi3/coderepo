@@ -75,3 +75,25 @@ perform these in server
    11  yum install maven
    13  mvn -v
     go to jenkins--manage jenkins--available plugins--maven--install it
+
+    now adding file in our repository
+       git remote -v
+   17  git clone https://github.com/adinathmahangareLTI/jenkins-maven /cloned-project
+   18  pwd
+   19  cd /cloned-project
+   20  ls
+   21  git remote -v
+   22  git remote remove origin
+   23  git remote add origin git@github.com:Satakshi3/coderepo.git
+   24  git remote -v
+   25  git push origin main
+   
+
+   now go into jenkins - manage jenkins--tools--add jdk--use runtime url --then add maven use home url--apply--save--build now--console output--copy url of building workplace---
+
+
+   if you don't find url use mvn -v in maven directory
+
+   jenkins terminal
+
+   

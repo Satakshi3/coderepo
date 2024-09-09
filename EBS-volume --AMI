@@ -1,0 +1,106 @@
+adding ami and copying it in another region
+
+
+1.create instance
+2.inbound permission--http,custom tcp, ssh
+3.create instance
+4.rum machine on terminal using ssh 
+#sudo su-
+#yum update -y
+#yum install httpd -y
+#rpmquery httpd
+#cd /var/www/html
+#echo "this is milestone 1" >index.html
+#ll
+#cat index.html
+#systemctl start httpd
+#curl http://localhost
+#ip a s
+#curl http://(ip no.)
+#yum install vsftpd -y
+#yum install cifs-utils -y
+#yum install nfs-utils -y
+#yum install tree -y
+#cd /tmp/
+
+5.stop instance
+6.create ami--instance--action--image and template-
+7.go to ami--launch instance through it--copy if you want to launch instance through this ami in another region
+
+8.volume--create volume--gb2--gib size--2Gib--avaibility zone as instance /dev/sdc/---attach volume
+#lsblk
+#mkdir /data/
+#cd /data
+#touch index.txt{1..100}
+#ll
+#mkfs.ext4  /dev/xvdb
+#lsblk
+#blkid----copy uuid of xvdb
+#vim /etc/fstab
+paste uuid--tab--/dev/xvdb--tab--ext4--tab--default,no fail
+save and quit
+#mount /dev/xvdb /data/
+#lsblk
+
+
+
+go to volume--modify increase volume size--
+terminal--
+#lsblk
+#df -h
+#resize2fs /dev/xvdb
+#df -h
+#cd /data
+#ll
+
+
+
+
+to decrease volume of data---
+create new volume with reduced size--
+attch it with same instance region--/dev/sdc
+#cd
+#ls
+#lsblk
+#mkfs.ext4 /dev/xvdc
+#mkdir /file
+#vim /etc/fstab
+edit add 0 and 2
+save and qit
+#mount /dev/xvdc /file/
+#cd
+#cd /data/
+#mv * /file/
+#cd
+#cd /file
+#ll
+
+check if file in data has moved in file
+
+#lsblk
+#systemctl daemon-reload
+#umount /data
+#df -h
+#lsblk
+
+#detach previous volume and remove it
+
+
+
+------increasing root volume-----
+
+check instance and modify root volume--increase
+#growpart /dev/xvda 1
+#xfs_growfs -d /dev/xvda1
+#mkdir /data-one
+#cd /data-one
+#touch Dracula.txt{1..100}
+#ll
+#df -h
+#blkid
+copy uuid of xvda1
+#vim /etc/fstab
+edit uuid --/dev/xvda1--xfs--default,no fail
+#mount /dev/xvda1 /data-one
+#lsblk
+#df -h

@@ -1,0 +1,99 @@
+VPC network Connection
+
+ using vlsm calculator -10.0.0.0/16
+1.Creating VPC network in aws in Mumbai region with IP-10.0.0.0/16--10.0.1.0/24
+2.Create Internet gateway and attach it to VPC
+3. create public and private subnets and enable subnet association10.0.0.0/24--10.0.1.0/
+4. Create an ec2 instance-inbound rules http icmp-IPv4
+5. Add route tables enabling internet gateway through vpc edit routes
+6.Edit subnet Association in routes
+7. connect instance on local machine using ssh-----
+
+ #sudo su -
+ #yum install httpd -y
+ #cd /var/www/html
+ #echo "this is website " > index.html
+ # systemctl start httpd
+ #systemctl enable httpd
+
+8.Install ,start and enable httpd on local machine
+9.checking if the html file is accessible using instance public ip
+10. make another instance with private subnet in same region
+11. testing the network connectivity of the website by ping command
+
+  #ip a s 
+  #ping (ip id)
+  #ping (private id of db server)
+12. Run the instance with private subnet on the same local machine
+    #vim (key name)
+    copy key from notepad
+    paste in vim file
+    #chmod 400 (key-name)
+    #connect with ssh key of instance
+13. add NAt network --rote table--edit subnet association--
+14. add private route table---edit routes ---route association
+15.check by ping google.com
+
+
+repeat same things in differet region from step 1-15
+
+
+16.  create ssh-key in both terminals
+   #ssh-keygen
+   #cd .ssh/
+   #cat id_rsa.pub
+ copy this id 
+
+
+
+go on second terminal 
+generate key
+   #ssh-keygen
+   #cd .ssh/
+   #cat id_rsa.pub
+   #vim authorized_keys
+paste ssh key of 1st region --save and exit
+   #cd
+   #mkdir /data/
+   #cd /data/
+   #touch file.txt{1..100}
+   #ll
+   
+
+do this process on both terminals
+
+
+17.go to peering connection
+give name
+select vpc
+my account
+another region
+select peering region
+and vpc id of the region where we are peering it
+
+
+
+go to the second region
+peering connection
+accect peering request
+add peering connection in both rote tables in public-rt
+
+
+go to terminal 1-
+#cd
+#cat > Dracula.txt
+#scp Dracula.txt root@(ip of 2nd region):/tmp
+
+
+go to terminal 2-
+#cd
+#cat > hello.txt
+#scp hello.txt root@(ip of 1st region):/mnt
+
+
+terminal 1---#cd /mnt/
+             #ll
+
+
+terminal 2---#cd /tmp/
+             #ll

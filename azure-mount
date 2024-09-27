@@ -15,29 +15,21 @@ https://packages.microsoft.com/config/rhel/8/packages-microsoft-prod.rpm
    12  apt install blobfuse -y
    13  mount -t tmpfs -o size=16g tmpfs /mnt/ramdisk
    14  mkdir /mnt/ramdisk/blobfusetmp
-   15  chown <youruser> /mnt/ramdisk/blobfusetmp
-   16  chown <admin> /mnt/ramdisk/blobfusetmp
-   17  curl -sL
-https://aka.ms/InstallAzureCLIDeb
-| sudo bash
+   16  chown admin /mnt/ramdisk/blobfusetmp
+   17  curl -sLhttps://aka.ms/InstallAzureCLIDeb| sudo bash
    18  az aks install-cli
    19  az aks kanalyze
    20  az login
    21  az get-credentials --resource-group azure-svg --name azure-cluster
    22  curl -LO "
-https://dl.k8s.io/release/$(curl
--L -s
-https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
+https://dl.k8s.io/release/$(curl-L -shttps://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
    23  kubectl get nodes
    24  curl -LO "
-https://dl.k8s.io/release/$(curl
--L -s
-https://dl.k8s.io/release/stable.txt)/bin/linux/arm64/kubectl"
+https://dl.k8s.io/release/$(curl-L -shttps://dl.k8s.io/release/stable.txt)/bin/linux/arm64/kubectl"
    25  kubectl get nodes
    26  az get-credentials --resource-group azure-svg --name azure-cluster
    27  az aks get-credentials --resource-group azure-svg --name azure-cluster
    28  curl -LO "
-https://dl.k8s.io/release/$(curl
--L -s
+https://dl.k8s.io/release/$(curl-L -s
 https://dl.k8s.io/release/stable.txt)/bin/linux/arm64/kubectl"
    29  kubectl get nodes

@@ -1,0 +1,46 @@
+commands to run install and config jenkins 
+ 1  free -h
+    2  cat /proc/meminfo
+    3  rpmquery jenkins
+    4  dnf install java-17-amazon-corretto -y
+    5  java -version
+    6   wget -O /etc/yum.repos.d/jenkins.repo     https://pkg.jenkins.io/redhat-stable/jenkins.repo
+    7  rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+    8  dnf install jenkins -y
+    9  systemctl enable jenkins
+   10  systemctl start jenkins
+   11  cat /var/lib/jenkins/secrets/initialAdminPassword
+   12  history
+
+
+
+
+dnf install java-17-amazon-corretto -y
+java -version
+wget -O /etc/yum.repos.d/jenkins.repo \
+https://pkg.jenkins.io/redhat-stable/jenkins.repo
+rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+dnf install jenkins -y
+systemctl enable jenkins
+systemctl start jenkins
+cat /var/lib/jenkins/secrets/initialAdminPassword
+ 
+Git 
+mkdir /test
+yum install git -y
+cd /test
+git init
+cd
+cd .ssh/
+ssh-key-gen
+ll
+cat id_rsa.pub
+cd
+cd /test
+vim index.html
+git add index.html
+git commit -m "first commit"
+git branch -m main
+git branch
+git remote add origin root@
+git push origin main
